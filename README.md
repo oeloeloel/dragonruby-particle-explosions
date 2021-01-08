@@ -21,7 +21,8 @@ Activate accepts two parameters representing the x and y location for the effect
 
 You can create a new effect by inheriting ParticleEffect.
 
-```# smokey rising grey effect
+```ruby
+# smokey rising grey effect
 class Smoke < ParticleEffect
 
   # this mandatory method must return the basic movement of the particle
@@ -51,4 +52,5 @@ class Smoke < ParticleEffect
       [[54, 54, 54], 3] # charcoal
     ]
   end
-end```
+end
+```

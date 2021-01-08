@@ -11,7 +11,7 @@ e.g.
 
 ```$smoke = Smoke.new(512) if args.state.tick_count.zero?```
 
-Effects accept one parameter: the number of particles to create.
+Effects accept one parameter: the number of particles to create. When publishing to html5, keep these numbers low to avoid low framerates.
 
 To activate an effect:
 

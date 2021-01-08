@@ -3,6 +3,8 @@ Some particle effects for DragonRuby.
 
 To use: require the `app/particles.rb` file.
 
+To create the particle effect:
+
 To avoid slowing down the game, particle effects must be created at the start (tick 0).
 
 e.g.
@@ -25,7 +27,8 @@ You can create a new effect by inheriting ParticleEffect.
 # smokey rising grey effect
 class Smoke < ParticleEffect
 
-  # this mandatory method must return the basic movement of the particle
+  # this mandatory method must return the basic movement of the particle.
+  # note that two values are returned (x movement and y movement).
   def step
     dir_x, dir_y = normalize((3 * rand) - 1.5, (3 * rand) - 1.5)
     return (2 * rand) * dir_x, (2 * rand) * dir_y
@@ -34,7 +37,7 @@ class Smoke < ParticleEffect
   # this optional method allows you to calculate the next x, y position of the particle
   # based on the current position, the base x, y movement of the particle
   # and the 'keyframe' value (the number of frames to wait before drawing).
-  # If this method is omitted, particles will move based on the calculation in the step method
+  # If this method is omitted, movement is based on the calculation in the step method
   def move(x, y, step_x, step_y, keyframe)
     next_y = y + Math.cos(Math.atan(step_x) * Math.atan(step_y)) * keyframe * 2
     next_x = x + Math.sin(step_x * step_y) * keyframe

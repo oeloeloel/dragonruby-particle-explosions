@@ -31,7 +31,9 @@ class Smoke < ParticleEffect
   # note that two values are returned (x movement and y movement).
   def step
     dir_x, dir_y = normalize((3 * rand) - 1.5, (3 * rand) - 1.5)
-    return (2 * rand) * dir_x, (2 * rand) * dir_y
+    step_x = (2 * rand) * dir_x
+    step_y = (2 * rand) * dir_y
+    return step_x, step_y
   end
 
   # this optional method allows you to calculate the next x, y position of the particle

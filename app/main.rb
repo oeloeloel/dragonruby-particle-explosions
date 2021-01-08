@@ -5,13 +5,24 @@ require 'app/particles.rb'
 
 def prepare(args)
   args.state.prepped = true
-  $effect = [
-    Disintegrate.new(128),
-    Melt.new(64),
-    Explode.new(256),
-    Smoke.new(512),
-    Swirl.new(512)
-  ]
+  if $gtk.platform == 'Emscripten'
+    $effect = [
+      Disintegrate.new(64),
+      Melt.new(64),
+      Explode.new(64),
+      Smoke.new(64),
+      Swirl.new(64)
+    ] 
+  else
+    $effect = [
+      Disintegrate.new(128),
+      Melt.new(128),
+      Explode.new(512),
+      Smoke.new(256),
+      Swirl.new(512)
+    ] 
+  end
+
   args.state.effect_counter = 0
 end
 

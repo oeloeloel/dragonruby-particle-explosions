@@ -33,7 +33,8 @@ class Smoke < ParticleEffect
 
   # this optional method allows you to calculate the next x, y position of the particle
   # based on the current position, the base x, y movement of the particle
-  # and the 'keyframe' value (the number of frames to wait before drawing)
+  # and the 'keyframe' value (the number of frames to wait before drawing).
+  # If this method is omitted, particles will move based on the calculation in the step method
   def move(x, y, step_x, step_y, keyframe)
     next_y = y + Math.cos(Math.atan(step_x) * Math.atan(step_y)) * keyframe * 2
     next_x = x + Math.sin(step_x * step_y) * keyframe
@@ -42,7 +43,8 @@ class Smoke < ParticleEffect
 
   # this mandatory method returns the colours used by the effect
   # each colour is accompanied by the number of times the colour will
-  # repeat before moving on to the next colour
+  # repeat before moving on to the next colour.
+  # Particles die when there are no more colours to display.
   def colour_seq
     [
       [[54, 54, 54], 3], # charcoal
